@@ -1,3 +1,3 @@
 # Pizza Store App in React/TypeScript, Redux/Toolkit, styles on SCSS
 
-[Pizza Store](https://countries-saroyangor.vercel.app/)
+[Pizza Store](https://react-pizza-saroyangor.vercel.app/)
