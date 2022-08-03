@@ -352,11 +352,12 @@ body {
 
   &--empty {
     margin: 0 auto;
-    width: 560px;
+    max-width: 560px;
     text-align: center;
 
     h2 {
-      font-size: 32px;
+      font-size: 28px;
+      font-weight: 700;
       margin-bottom: 10px;
     }
 
@@ -367,14 +368,10 @@ body {
       color: #777777;
     }
 
-    icon {
-      position: relative;
-      top: 2px;
-    }
-
     img {
       display: block;
-      width: 300px;
+      max-width: 300px;
+      width: 100%;
       margin: 45px auto 60px;
     }
 

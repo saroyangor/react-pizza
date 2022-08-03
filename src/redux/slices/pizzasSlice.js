@@ -17,11 +17,7 @@ const initialState = {
 export const pizzasSlice = createSlice({
   name: "pizzas",
   initialState,
-  reducers: {
-    setItems: (state, action) => {
-      state.items = action.payload
-    }
-  },
+  reducers: {},
   extraReducers: {
     [fetchPizzas.pending]: (state) => {
       state.status = "loading"
@@ -38,6 +34,6 @@ export const pizzasSlice = createSlice({
   }
 })
 
-export const { setItems } = pizzasSlice.actions
+export const {} = pizzasSlice.actions
 
 export default pizzasSlice.reducer
