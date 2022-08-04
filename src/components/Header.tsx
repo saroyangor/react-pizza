@@ -1,21 +1,21 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 
-import { useDispatch, useSelector } from "react-redux"
-import { resetFilters } from "../redux/slices/filterSlice"
-import { selectCart } from "../redux/slices/cartSlice"
+import {useDispatch, useSelector} from "react-redux"
+import {resetFilters} from "../redux/slices/filterSlice"
+import {selectCart} from "../redux/slices/cartSlice"
 
 import Search from "./Search"
 
 import logoSvg from "../assets/img/pizza-logo.svg"
 
-const Header = () => {
+const Header: React.FC = () => {
   const dispatch = useDispatch()
-  const { totalPrice, items } = useSelector(selectCart)
+  const {totalPrice, items} = useSelector(selectCart)
 
   const location = useLocation()
 
-  const totalCount = items.reduce((sum, item) => sum + item.count, 0)
+  const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0)
 
   return (
     <div className="header">

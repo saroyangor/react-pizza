@@ -1,28 +1,31 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setSort } from "../redux/slices/filterSlice"
+import { RootState } from "../redux/store";
+import { TSort } from "../@types/types";
 
-export const sortList = [
+export const sortList: TSort[] = [
   { name: "популярности", sortType: "rating" },
   { name: "цене", sortType: "price" },
   { name: "алфавиту", sortType: "title" }
 ]
 
-const Sort = () => {
+const Sort: React.FC = () => {
   const dispatch = useDispatch()
-  const sort = useSelector(state => state.filter.sort)
-  const sortRef = useRef()
+  const sort = useSelector((state: RootState) => state.filter.sort)
+  const sortRef = useRef<HTMLDivElement>(null)
 
   const [isVisiblePopup, setVisiblePopup] = useState(false)
 
-  const handleSort = (obj) => {
+  const handleSort = (obj: TSort) => {
     dispatch(setSort(obj))
     setVisiblePopup(false)
   }
 
   useEffect(() => {
-    const handleClickOutside = e => {
-      if(!e.path.includes(sortRef.current)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      const event = e as MouseEvent & { path: Node[] }
+      if (sortRef.current && !event.path.includes(sortRef.current)) {
         setVisiblePopup(false)
       }
     }
@@ -33,7 +36,7 @@ const Sort = () => {
   }, [])
 
   return (
-    <div ref={sortRef} className="sort">
+    <div ref={ sortRef } className="sort">
       <div className="sort__label">
         <svg
           width="10"
@@ -48,7 +51,7 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setVisiblePopup(!isVisiblePopup)}>{sort.name}</span>
+        <span onClick={ () => setVisiblePopup(!isVisiblePopup) }>{ sort.name }</span>
       </div>
       {
         isVisiblePopup && (
@@ -57,11 +60,11 @@ const Sort = () => {
               {
                 sortList.map((item) => (
                   <li
-                    key={item.sortType}
-                    className={sort.sortType === item.sortType ? "active" : ""}
-                    onClick={() => handleSort(item)}
+                    key={ item.sortType }
+                    className={ sort.sortType === item.sortType ? "active" : "" }
+                    onClick={ () => handleSort(item) }
                   >
-                    {item.name}
+                    { item.name }
                   </li>
                 ))
               }

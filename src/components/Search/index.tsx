@@ -6,20 +6,19 @@ import styles from "./Search.module.scss"
 import { useDispatch } from "react-redux"
 import { setSearchValue } from "../../redux/slices/filterSlice"
 
-
-const Search = () => {
+const Search: React.FC = () => {
   const [value, setValue] = useState("")
   const dispatch = useDispatch()
 
-  const inputRef = useRef(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const updateSearchValue = useCallback(
-    debounce(str => {
+    debounce((str: string) => {
       dispatch(setSearchValue(str))
     }, 500),
     [])
 
-  const onChangeInput = e => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
     updateSearchValue(e.target.value)
   }
@@ -27,13 +26,13 @@ const Search = () => {
   const onClickClear = () => {
     setValue("")
     dispatch(setSearchValue(""))
-    inputRef.current.focus()
+    inputRef.current?.focus()
   }
 
   return (
-    <div className={styles.root}>
+    <div className={ styles.root }>
       <svg
-        className={styles.icon}
+        className={ styles.icon }
         enableBackground="new 0 0 32 32"
         id="Editable-line"
         version="1.1"
@@ -56,23 +55,23 @@ const Search = () => {
               strokeMiterlimit="10" strokeWidth="2" x1="27" x2="20.366" y1="27" y2="20.366"/>
       </svg>
       <input
-        className={styles.input}
-        ref={inputRef}
+        className={ styles.input }
+        ref={ inputRef }
         placeholder="Поиск пиццы..."
-        value={value}
-        onChange={onChangeInput}
+        value={ value }
+        onChange={ onChangeInput }
       />
-      {value && (
+      { value && (
         <svg
-          className={styles.clearIcon}
-          onClick={onClickClear}
+          className={ styles.clearIcon }
+          onClick={ onClickClear }
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/>
         </svg>
-      )}
+      ) }
     </div>
   )
 }

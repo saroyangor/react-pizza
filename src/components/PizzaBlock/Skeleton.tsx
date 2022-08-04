@@ -1,13 +1,13 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-const Skeleton = () => (
+const Skeleton: React.FC = () => (
   <div className="pizza-block-wrapper">
     <ContentLoader
       className="pizza-block"
-      speed={1}
-      width={280}
-      height={500}
+      speed={ 1 }
+      width={ 280 }
+      height={ 500 }
       viewBox="0 0 280 500"
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
