@@ -6,11 +6,7 @@ import { setFilters } from "../redux/slices/filterSlice"
 import { fetchPizzas } from "../redux/slices/pizzasSlice"
 import { RootState, useAppDispatch } from "../redux/store";
 
-import Categories from "../components/Categories"
-import Sort, { sortList } from "../components/Sort"
-import Skeleton from "../components/PizzaBlock/Skeleton"
-import PizzaBlock from "../components/PizzaBlock"
-import Pagination from "../components/Pagination"
+import { Categories, Skeleton, PizzaBlock, Pagination, Sort, sortList } from "../components"
 import { TFilterState } from "../@types/types";
 
 

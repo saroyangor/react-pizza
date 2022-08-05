@@ -7,7 +7,7 @@ import { TCartItem, TPizzaBlock } from "../../@types/types";
 const typeNames = ["тонкое", "традиционное"]
 
 
-const PizzaBlock: React.FC<TPizzaBlock> = ({ id, name, price, imageUrl, sizes, types }) => {
+export const PizzaBlock: React.FC<TPizzaBlock> = ({ id, name, price, imageUrl, sizes, types }) => {
   const dispatch = useDispatch()
   const cartItem = useSelector((state: RootState) => state.cart.items.find((obj: any) => obj.id === id))
   const cartItemCount = cartItem ? cartItem.count : 0
@@ -91,5 +91,3 @@ const PizzaBlock: React.FC<TPizzaBlock> = ({ id, name, price, imageUrl, sizes, t
     </div>
   )
 }
-
-export default PizzaBlock

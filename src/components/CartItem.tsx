@@ -4,7 +4,7 @@ import { addItem, minusItem, removeItem } from "../redux/slices/cartSlice"
 import { TCartItem } from "../@types/types";
 
 
-const CartItem: React.FC<TCartItem> = ({ id, name, price, type, size, count, imageUrl }) => {
+export const CartItem: React.FC<TCartItem> = ({ id, name, price, type, size, count, imageUrl }) => {
   const dispatch = useDispatch()
 
   const onClickPlus = () => {
@@ -75,5 +75,3 @@ const CartItem: React.FC<TCartItem> = ({ id, name, price, type, size, count, ima
     </div>
   )
 }
-
-export default CartItem

@@ -9,7 +9,7 @@ import Search from "./Search"
 
 import logoSvg from "../assets/img/pizza-logo.svg"
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
   const dispatch = useDispatch()
   const { totalPrice, items } = useSelector(selectCart)
   const isMounted = useRef(false)
@@ -79,5 +79,3 @@ const Header: React.FC = () => {
     </div>
   )
 }
-
-export default Header
