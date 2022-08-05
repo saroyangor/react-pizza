@@ -1,21 +1,31 @@
-import React from "react"
-import {Route, Routes} from "react-router-dom"
+import React, { Suspense } from "react"
+import { Route, Routes } from "react-router-dom"
 
 import "./scss/app.scss"
 
-import Home from "./pages/Home"
-import Cart from "./pages/Cart"
-import NotFound from "./pages/NotFound"
 import MainLayout from "./layouts/MainLayout"
+import Home from "./pages/Home"
+import Loader from "./components/Loader";
+
+const Cart = React.lazy(() => import("./pages/Cart"))
+const NotFound = React.lazy(() => import("./pages/NotFound"))
 
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainLayout/>}>
-        <Route path="" element={<Home/>}/>
-        <Route path="cart" element={<Cart/>}/>
-        <Route path="*" element={<NotFound/>}/>
+
+      <Route path="/" element={ <MainLayout/> }>
+        <Route path="" element={ <Home/> }/>
+        <Route path="cart" element={
+          <Suspense fallback={ <Loader/> }>
+            <Cart/>
+          </Suspense>
+        }/>
+        <Route path="*" element={
+          <Suspense fallback={ <Loader/> }>
+            <NotFound/>
+          </Suspense> }/>
       </Route>
     </Routes>
   )
