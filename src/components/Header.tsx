@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { resetFilters } from "../redux/slices/filterSlice"
 import { selectCart } from "../redux/slices/cartSlice"
 
-import Search from "./Search"
+import { Search } from "./Search"
 
 import logoSvg from "../assets/img/pizza-logo.svg"
 
